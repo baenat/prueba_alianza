@@ -1,0 +1,48 @@
+<div class="contain">
+  <h2>Formulario de Registro</h2>
+  <div class="wrapper">
+    <div class="form">
+
+      <form [formGroup]="formProduct" (ngSubmit)="sendData()">
+
+        <div class="form-group" (submit)="sendData()">
+          <label for="id">ID</label>
+          <input type="number" formControlName="id" class="form-control" name="id">
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" formControlName="nombreProducto" class="form-control" id="nombreProducto" name="nombreProducto">
+        </div>
+
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <input type="text" formControlName="descripcion" class="form-control" id="descripcion" name="descripcion">
+        </div>
+
+        <div class="form-group">
+          <label for="logo">Logo</label>
+          <input type="url" formControlName="logo" class="form-control" id="descripcion" name="descripcion">
+        </div>
+
+        <div class="form-group">
+          <label for="fechaLiberacion">Fecha Liberación</label>
+          <input type="date" formControlName="fechaLiberacion" class="form-control" id="fechaLiberacion"
+            name="fechaLiberacion">
+        </div>
+
+        <div class="form-group">
+          <label for="fechaReestructuracion">Fecha Revisión</label>
+          <input type="date" formControlName="fechaReestructuracion" class="form-control" id="fechaReestructuracion"
+            name="fechaReestructuracion">
+        </div>
+
+        <div class="buttons">
+          <button type="reset" class="btn-reset">Reiniciar</button>
+          <button class="btn-send" [disabled]="formProduct.invalid">Enviar datos</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

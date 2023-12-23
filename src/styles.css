@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+/* Variables CSS a utilizar */
+
+:root {
+  --color-1: #108954;
+  --color-2: #323232;
+  --color-3: #000000;
+  --color-4: #ffffff;
+  --color-5: #f0f9fc;
+  --font-size-1: 1rem;
+  --font-size-2: 1.2rem;
+  --font-size-3: 1.8rem;
+  --shadow-1: rgb(0 0 0 / 35%) 0px 8px 24px;
+  --shadow-2: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --border-radius-1: .25rem;
+  --border-radius-2: .5rem;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --animation-200: 200ms;
+}
+
+html,
+body {
+  /* margin: 0; */
+  padding: 0;
+  background-color: var(--color-5);
+  font-family: var(--font-family);
+  font-size: var(--font-size-1);
+  color: var(--color-2);
+}
+
+/* input,
+button {
+  font-family: var(--font-family);
+} */
+
+button:disabled {
+  opacity: .5;
+}

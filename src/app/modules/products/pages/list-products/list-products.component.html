@@ -1,0 +1,44 @@
+<section>
+
+  <app-header></app-header>
+
+  <article>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Nombre producto</th>
+          <th>Descripción</th>
+          <th>Fecha liberación</th>
+          <th>Fecha reestructuracion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of products">
+          <td>
+            <img class="logo" appImgBroken [src]="prod.logo" alt="">
+          </td>
+          <td>{{prod.nombreProducto}}</td>
+          <td>{{prod.descripcion}}</td>
+          <td>{{prod.fechaLiberacion}}</td>
+          <td>{{prod.fechaReestructuracion}}</td>
+          <td>
+            <div class="icons">
+              <img (click)="editProduct(prod)" class="icon" src="../../../../../assets/icons/edit.png" alt="">
+              <img (click)="deleteProduct(prod.id)" class="icon" src="../../../../../assets/icons/delete.png" alt="">
+            </div>
+          </td>
+        </tr>
+        <tr class="active-row">
+          <td>{{products.length}}</td>
+          <td>Resultados</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</section>

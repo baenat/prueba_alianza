@@ -1,0 +1,36 @@
+article {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+/* Input */
+/* .search-component {
+  padding: 0 1.5rem;
+} */
+
+.search-component input {
+  inset: 0;
+  /* border-radius: 3rem; */
+  height: 40px;
+  width: 18rem;
+  padding: 0 .75rem;
+  /* font-size: 90%; */
+}
+
+/* Buttons */
+.button-1 {
+  background-color: #052662;
+  border-radius: 2px;
+  border-style: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 16px;
+}
+
+.button-1:hover {
+  /* background-color: #F082AC; */
+  opacity: 0.5;
+}
