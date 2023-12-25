@@ -9,17 +9,18 @@
   --font-size-1: 1rem;
   --font-size-2: 1.2rem;
   --font-size-3: 1.8rem;
+  --font-size-4: .8rem;
   --shadow-1: rgb(0 0 0 / 35%) 0px 8px 24px;
   --shadow-2: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   --border-radius-1: .25rem;
   --border-radius-2: .5rem;
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family: arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --animation-200: 200ms;
 }
 
 html,
 body {
-  /* margin: 0; */
+  margin: 0;
   padding: 0;
   background-color: var(--color-5);
   font-family: var(--font-family);
@@ -27,9 +28,44 @@ body {
   color: var(--color-2);
 }
 
-/* input,
+/* Input */
+input.ng-invalid.ng-touched {
+  border: solid 1px red !important
+}
+
+/* Buttons */
+
+/* form div.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+
+  .btn-send {
+    margin-left: 2%;
+  }
+}
+
 button {
-  font-family: var(--font-family);
+  padding: 1rem;
+  width: 140px;
+}
+
+button.btn-reset {
+  background: lightgray;
+  border: 0;
+  color: #052662;
+  font-weight: bold;
+}
+
+button.btn-send {
+  background: #052662;
+  border: 0;
+}
+
+button:hover.btn-send {
+  opacity: 0.5;
+  outline: 0;
 } */
 
 button:disabled {

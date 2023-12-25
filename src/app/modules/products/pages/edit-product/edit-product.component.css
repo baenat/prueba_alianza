@@ -1,3 +1,11 @@
+.contain {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  margin-top: 8%;
+}
+
 div.wrapper {
   background: #ffff;
   padding: 1rem 2rem;
@@ -21,11 +29,13 @@ h2 {
   margin-bottom: 20px;
 }
 
-input {
+input, textarea {
   /* width: 100%; */
   width: 85%;
   padding: 10px;
   border: 1px solid #ccc;
+  font-family: var(--font-family);
+  border-radius: 5px;
 }
 
 button {
@@ -91,37 +101,6 @@ form label {
   display: block;
 }
 
-button,
-input,
-textarea {
-  padding: 1em;
-}
-
-button.btn-reset {
-  background: lightgray;
-  width: 100%;
-  border: 0;
-}
-
-button.btn-send {
-  background: #073994;
-  width: 100%;
-  border: 0;
-}
-
-button:hover.btn-send {
-  opacity: 0.5;
-  outline: 0;
-}
-
-
-.contain {
-  max-width: 1170px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1em;
-}
-
 h3,
 ul {
   margin: 0;
@@ -133,16 +112,32 @@ h3 {
 
 /* Buttons */
 
-div.buttons {
+form div.buttons {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
 }
 
-.btn-send {
-  margin-left: 2%;
+button {
+  padding: 1rem;
+  width: 140px;
+  border-radius: 5px;
 }
 
+button.btn-reset {
+  background: lightgray;
+  border: 0;
+  color: #052662;
+  font-weight: bold;
+}
 
-input.ng-invalid.ng-touched {
-  border: solid 1px red !important
+button.btn-send {
+  background: #052662;
+  border: 0;
+}
+
+button:hover.btn-send {
+  opacity: 0.5;
+  outline: 0;
 }

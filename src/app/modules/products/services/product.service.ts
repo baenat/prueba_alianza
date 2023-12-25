@@ -1,51 +1,35 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ProductModel } from '@core/models/product.model';
-import { Observable, filter, from, map, of, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { products } from '@data/products'
+import { GeneralService } from '@shared/services/general.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  listProducts: ProductModel[] = products.map((item) => ({ ...item, id: this.setProductId() }));
-
   constructor(
-    private httpClient: HttpClient,
+    private _generalServices: GeneralService
   ) { }
 
   setProductId(): number {
     return Math.ceil(Math.random() * 100000);
   }
 
-  getAllProducts(): ProductModel[] {
-    return this.listProducts;
+  getAllProducts(): Observable<any> {
+    return this._generalServices.get('products');
   }
 
-  registerProduct(product: ProductModel) {
-    this.listProducts.push(product);
+  registerProduct(product: ProductModel): Observable<any> {
+    return this._generalServices.post('products', product);
   }
 
-  editProduct(product: ProductModel) {
-    const index = this.listProducts.findIndex(item => item.id === product.id);
-    if (index === -1) {
-      throw console.log('product not found');
-    }
-    const productOld = this.listProducts[index];
-    const updateProduct = {
-      ...productOld,
-      ...product
-    }
-    this.listProducts[index] = updateProduct;
+  editProduct(product: ProductModel): Observable<any> {
+    return this._generalServices.put(`products/${product.id}`, product);
   }
 
-  deleteProduct(id: number): ProductModel[] {
-    this.listProducts = this.listProducts.filter((product) => product.id !== id);
-    return this.listProducts;
+  deleteProduct(id: number): Observable<any> {
+    return this._generalServices.delete(`products/${id}`);
   }
-
-
 
 }

@@ -3,42 +3,57 @@
   <app-header></app-header>
 
   <article>
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Logo</th>
-          <th>Nombre producto</th>
-          <th>Descripción</th>
-          <th>Fecha liberación</th>
-          <th>Fecha reestructuracion</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let prod of products">
-          <td>
-            <img class="logo" appImgBroken [src]="prod.logo" alt="">
-          </td>
-          <td>{{prod.nombreProducto}}</td>
-          <td>{{prod.descripcion}}</td>
-          <td>{{prod.fechaLiberacion}}</td>
-          <td>{{prod.fechaReestructuracion}}</td>
-          <td>
-            <div class="icons">
-              <img (click)="editProduct(prod)" class="icon" src="../../../../../assets/icons/edit.png" alt="">
-              <img (click)="deleteProduct(prod.id)" class="icon" src="../../../../../assets/icons/delete.png" alt="">
-            </div>
-          </td>
-        </tr>
-        <tr class="active-row">
-          <td>{{products.length}}</td>
-          <td>Resultados</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="content-table">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del producto</th>
+            <th>Descripción</th>
+            <th>Fecha de liberación</th>
+            <th>Fecha de reestructuración</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products">
+            <td>
+              <img class="logo" appImgBroken [src]="prod?.logo" alt="">
+            </td>
+            <td>
+              <span>{{prod.nombreProducto}}</span>
+            </td>
+            <td>
+              <span>{{prod.descripcion}}</span>
+            </td>
+            <td>
+              <span>{{prod.fechaLiberacion}}</span>
+            </td>
+            <td>
+              <span>{{prod.fechaReestructuracion}}</span>
+            </td>
+            <td>
+              <div class="dropdown">
+                <img (click)="editProduct(prod)" class="icon" src="../../../../../assets/icons/vertical_.png" alt="">
+                <div class="dropdown-content">
+                  <a (click)="editProduct(prod)">Editar <img (click)="editProduct(prod)" width="12px"
+                      src="../../../../../assets/icons/edit.png" alt=""></a>
+                  <a (click)="deleteProduct(prod.id)">Eliminar <img (click)="deleteProduct(prod.id)" width="12px"
+                      src="../../../../../assets/icons/delete.png" alt=""></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="active-row">
+            <td>{{products.length}}</td>
+            <td>Resultados</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </article>
 </section>

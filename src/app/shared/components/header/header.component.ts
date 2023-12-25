@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { SearchService } from '@shared/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,21 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  router = inject(Router);
+  searchProduct: string = '';
+
+  _router = inject(Router);
+  _searchService = inject(SearchService);
 
   routerPage() {
-    this.router.navigate(['/products/create']);
+    this._router.navigate(['/products/create']);
+  }
+
+  searchProducts(terms: string) {
+    if (terms.trim().length > 3 || terms.trim() == '') {
+      this._searchService.search(terms).subscribe({
+        next: (response) => this._searchService.onResultSearch(response)
+      });
+    }
   }
 
 }

@@ -1,6 +1,6 @@
 <article>
   <div class="search-component">
-    <input type="text" placeholder="Buscar ...">
+    <input type="text" placeholder="Buscar..." (ngModelChange)="searchProducts($event)" [(ngModel)]="searchProduct">
   </div>
   <div>
     <button (click)="routerPage()" class="button-1" role="button">Agregar</button>

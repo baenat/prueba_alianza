@@ -1,40 +1,59 @@
+/* Content table */
+.content-table {
+  padding: 40px 53px 20px 53px;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow-x:auto;
+  margin-bottom: 20px;
+}
 
 /* Table */
 .styled-table {
   border-collapse: collapse;
-  margin: 10px 0;
+  width: 60rem;
+  transition: transform 5s ease 0s;
+}
+
+.styled-table thead {
+  height: 60px;
   font-size: 0.9em;
-  min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .styled-table thead tr {
-  background-color: #b9c0be;
-  color: #ffffff;
-  text-align: center;
+  background-color: var(--color-5);
+  color: var(--color-3);
+  text-align: left;
 }
 
 .styled-table th,
 .styled-table td {
   padding: 12px 15px;
+
+  span {
+    overflow: hidden;
+    white-space: initial;
+    text-overflow: ellipsis;
+    /* display: -webkit-box; */
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
 }
 
 .styled-table tbody tr {
   border-bottom: 1px solid #dddddd;
 }
 
-.styled-table  tbody /* tr:nth-of-type(even) */ {
-  /* background-color: #f3f3f3; */
+.styled-table tbody
+
+/* tr:nth-of-type(even) */
+  {
   background-color: #ffffff;
 }
 
-/* .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #282828;
-} */
-
 .styled-table tbody tr.active-row {
   font-weight: bold;
-  color: #acaead;
+  color: var(--color-3);
+  border-bottom: none;
 }
 
 img.logo {
@@ -55,7 +74,7 @@ section article:nth-child(1) {
 }
 
 img.icon {
-  width: 25px;
+  width: 20px;
   padding: 0 2px;
   height: auto;
 }
@@ -64,7 +83,7 @@ img.icon {
 .icons {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-around;
 }
 
@@ -75,4 +94,34 @@ dialog div {
 
 dialog::backdrop {
   filter: blur(4px);
+}
+
+/* dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: auto;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  color: var(--color-3);
+  background-color: var(--color-5);
+}
+
+.dropdown-content a:hover img {
+  background-color: initial;
 }

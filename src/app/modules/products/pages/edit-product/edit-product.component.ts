@@ -15,21 +15,18 @@ export class EditProductComponent implements OnInit {
   productEdit: ProductModel = { id: 1, logo: '', nombreProducto: '', descripcion: '', fechaLiberacion: '' };
 
   constructor(
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private productService: ProductService,
-    private router: Router
+    private _route: ActivatedRoute,
+    private _formBuilder: FormBuilder,
+    private _productService: ProductService,
+    private _router: Router
   ) {
-    this.route.queryParams
-      .subscribe({
-        next: ({ product }: any) => {
-          this.productEdit = JSON.parse(product)
-        }
-      });
+    this._route.queryParams.subscribe({
+      next: ({ product }: any) => this.productEdit = JSON.parse(product)
+    });
   }
 
   formEditProduct() {
-    this.formProduct = this.formBuilder.group({
+    this.formProduct = this._formBuilder.group({
       id: [this.productEdit.id, Validators.required],
       nombreProducto: [this.productEdit.nombreProducto, [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       descripcion: [this.productEdit.descripcion, Validators.required],
@@ -45,8 +42,16 @@ export class EditProductComponent implements OnInit {
 
   sendData() {
     if (this.formProduct.invalid) return;
-    this.productService.editProduct(this.formProduct.value);
-    this.router.navigate(['/products/list']);
+    this._productService.editProduct(this.formProduct.value).subscribe({
+      next: () => this._router.navigate(['/products/list']),
+      error: (error) => console.log('Error editProduct', error)
+    })
+  }
+
+  resetForm() {
+    this.formProduct.reset({
+      id: this.productEdit.id,
+    });
   }
 
 }

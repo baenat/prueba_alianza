@@ -4,11 +4,6 @@ article {
   margin-top: 5%;
 }
 
-/* Input */
-/* .search-component {
-  padding: 0 1.5rem;
-} */
-
 .search-component input {
   inset: 0;
   /* border-radius: 3rem; */
@@ -31,6 +26,5 @@ article {
 }
 
 .button-1:hover {
-  /* background-color: #F082AC; */
   opacity: 0.5;
 }

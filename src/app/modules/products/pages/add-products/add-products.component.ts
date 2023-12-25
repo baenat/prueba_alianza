@@ -11,6 +11,7 @@ import { ProductService } from '@modules/products/services/product.service';
 export class AddProductsComponent implements OnInit {
 
   formProduct: FormGroup = new FormGroup({});
+  productId: number = this.setProductId();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,7 +25,7 @@ export class AddProductsComponent implements OnInit {
 
   formCreateData() {
     this.formProduct = this.formBuilder.group({
-      id: [this.setProductId(), Validators.required],
+      id: [this.productId, Validators.required],
       nombreProducto: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       descripcion: [null, Validators.required],
       logo: [null, Validators.required],
@@ -34,15 +35,21 @@ export class AddProductsComponent implements OnInit {
   }
 
   sendData() {
-    console.log('this.formCreate.value => ', this.formProduct.value);
     if (this.formProduct.invalid) return;
-    this.productService.registerProduct(this.formProduct.value)
-    this.router.navigate(['/products/list']);
+    this.productService.registerProduct(this.formProduct.value).subscribe({
+      next: () => this.router.navigate(['/products/list']),
+      error: (error) => console.log('Error registerProduct', error)
+    });
   }
 
   setProductId(): number {
     return this.productService.setProductId();
   }
 
+  resetForm() {
+    this.formProduct.reset({
+      id: this.productId,
+    });
+  }
 
 }

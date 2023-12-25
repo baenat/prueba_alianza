@@ -1,9 +1,12 @@
 :host {
-  font-size: 14px;
-  color: #333;
+  font-size: var(--font-size-4);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  label {
+    font-weight: bold;
+  }
 }
 
 .card-container {

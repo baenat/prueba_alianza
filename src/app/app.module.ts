@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductService } from '@modules/products/services/product.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { InjectInterceptor } from '@core/interceptors/inject.interceptor';
 
 @NgModule({
   declarations: [
@@ -13,11 +14,20 @@ import { ProductService } from '@modules/products/services/product.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    NgxSpinnerModule,
   ],
-  providers: [ProductService],
-  bootstrap: [AppComponent]
+  providers: [
+    ProductService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InjectInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
